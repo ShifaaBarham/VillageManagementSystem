@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+  }
+  body {
+    min-height: 100vh;
+    background-color: #1F2937;
+    color: #d4d5dc;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    margin: 0 !important;
+    overflow: hidden;
+  }
+  nav {
+    margin: 0px;
+  }
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 1.7%;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  h3 {
+    font-size: 0.9rem;
+  }
+  h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #b8bac5;
+  }
+  #sideBar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1F2937;
+  }
+  #sideBar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+  #sideBar ul .header {
+    margin: 20px;
+  }
+  #sideBar ul .header .sections-header {
+    font-size: 1.29rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+  }
+  #sideBar ul li {
+    width: 100%;
+  }
+  #sideBar ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    text-decoration: none;
+    color: #d4d5dc;
+    border-radius: 5px;
+    font-weight: 500;
+    width: 90%;
+  }
+  #sideBar ul li a:hover {
+    background-color: #314158;
+  }
+  #sideBar ul li a.active {
+    background-color: #0d1116;
+  }
+  #sideBar ul li a svg {
+    fill: #d4d5dc;
+    margin-right: 10px;
+  }
+  @media (max-width: 800px) {
+    #sideBar {
+      height: 60px;
+      width: 100%;
+      padding: 0;
+      position: fixed;
+      z-index: 2;
+      top: unset;
+      bottom: 0;
+      background-color: #1F2937;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #sideBar ul {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+    }
+    #sideBar ul .header {
+      display: none;
+    }
+    #sideBar ul li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #sideBar ul li a {
+      height: 60px;
+      padding: 0 10px;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #sideBar ul li a svg {
+      width: 24px;
+      height: 24px;
+    }
+    #sideBar ul li a span {
+      display: none;
+    }
+  }
+  #account-section {
+    margin-top: 320px !important;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding: 10px;
+  }
+  #information {
+    display: flex;
+    align-items: center;
+  }
+  #profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  #username {
+    font-weight: 500;
+    display: inline;
+    margin-right: 10px;
+  }
+  #logout-button {
+    color: red;
+    background-color: #1F2937;
+    border: none ;
+    display: inline;
+  }
+  @media (max-width: 800px) {
+    #username,
+    #logout-button {
+      display: none;
+    }
+  }
+  .section {
+    display: none;
+    height: 100vh;
+    margin-left: 10px;
+    margin-right: 10px;
+  
+  }
+  .section.active {
+    display: block;
+  }
+  main {
+    background-color: #1A202C;
+    grid-column: 2;
+    grid-row: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
