@@ -1,4 +1,3 @@
-/* Sidebar Styles */
 .sideBar {
   flex-direction: column;
   align-items: center;
@@ -79,8 +78,8 @@ align-items: center;
   border-radius: 50%;
   margin-right: 20px;
 
-  border-radius: 50%; /* جعلها دائرية */
-  object-fit: cover; /* تغطية كاملة */
+  border-radius: 50%; 
+  object-fit: cover;
 }
 
 .username {
@@ -90,7 +89,6 @@ align-items: center;
 
 }
 @media (max-width: 800px) {
-/* الشريط الجانبي يصبح شريطًا سفليًا */
 .sideBar {
   height: 60px;
   width: 100%;
@@ -105,80 +103,72 @@ align-items: center;
   align-items: center;
 }
 
-/* ترتيب قائمة العناصر */
 .sideBar ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-around; /* توزيع متساوٍ */
+  justify-content: space-around; 
   align-items: center;
-  gap: 0; /* إزالة الفجوات */
+  gap: 0; 
   margin: 0;
   padding: 0;
-  list-style: none; /* إزالة النقاط */
-  width: 100%; /* احتلال العرض الكامل */
+  list-style: none; 
+  width: 100%; 
 }
 
-/* كل عنصر في القائمة */
 .sideBar ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px; /* توحيد عرض العناصر */
-  height: 60px; /* توحيد ارتفاع العناصر */
+  width: 60px;
+  height: 60px; 
 }
 
-/* الروابط داخل العناصر */
 .sideBar ul li a {
   padding:0;
-  height: 100%; /* ملء الارتفاع الكامل */
-  width: 100%; /* ملء العرض الكامل */
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* لون النص */
-  text-decoration: none; /* إزالة الخط السفلي */
-  border-radius: 0; /* بدون حواف دائرية */
-  transition: background-color 0.3s ease; /* تأثير عند التمرير */
+  color: white; 
+  text-decoration: none; 
+  border-radius: 0; 
+  transition: background-color 0.3s ease; 
 }
 
 .sideBar ul li a:hover {
-  background-color: #374151; /* لون مختلف عند التمرير */
+  background-color: #374151;
 }
 
-/* الأيقونات داخل الروابط */
 .sideBar ul li a svg {
   width: 24px;
   height: 24px;
 }
-  /* إخفاء عنوان الهيدر */
   .sideBar ul .header {
     display: none;
   }
 
-/* إخفاء النصوص */
 .sideBar ul li a span,
 .username {
   display: none;
 }
 
-/* صورة البروفايل */
 .profileImage {
   display: block;
   margin: auto;
-  width: 40px; /* حجم الصورة */
+  width: 40px; 
   height: 40px;
-  border-radius: 50%; /* جعلها دائرية */
-  object-fit: cover; /* تغطية كاملة */
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-/* قسم الحساب */
 .accountSection {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px; /* نفس حجم العناصر */
-  height: 60px; /* نفس حجم العناصر */
+  width: 60px; 
+  height: 60px; 
 }
 }
 
