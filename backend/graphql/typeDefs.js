@@ -45,25 +45,41 @@ type Village {
   longitude: Float
   image: String
 }
+  
 
-  type Image {
-    id: Int
-    imgBase64: String
-    imgText: String
-    createdAt: String
-  }
+ type Image {
+  id: Int
+  imgBase64: String
+  imgText: String
+  createdAt: String
+  ownerId: Int
+}
+
+type Message {
+  id: ID!
+  sender: String!
+  recipient: String!
+  text: String!
+  timestamp: String!
+}
 
   type Message {
     message: String!
   }
-
+type Admin {
+  id: ID!
+  full_name: String!
+  profile_image: String
+}
    type Query {
+     getGallery(userId: Int!): [Image]
    villages: [Village]
   village(id: ID!): Village
-    getGallery: [Image]
     currentUser: User
         user(id: ID!): User
           getVillageById(id: ID!): Village
+            admins: [Admin]
+  userChats(userId: ID!, recipientId: ID!): [Message]
 
   }
 
@@ -109,8 +125,8 @@ type Village {
    signUp(username: String!, password: String!, full_name: String!, role: String!, profileImage: String): AuthPayload!
     login(username: String!, password: String!): AuthPayload!
     logout: Message
+  addImage(imgBase64: String!, imgText: String!, ownerId: Int!): Image
 
-    addImage(imgBase64: String!, imgText: String!): Image
   }
 `;
 
