@@ -11,6 +11,15 @@ const resolvers = {
 
   // Queries
   Query: {
+    admins: async (_, __, { db }) => {
+      return await db.query("SELECT id, full_name, profile_image FROM users WHERE role = 'admin'");
+    },
+    userChats: async (_, { userId, recipientId }, { db }) => {
+      return await db.query(
+        "SELECT * FROM messages WHERE (sender = ? AND recipient = ?) OR (sender = ? AND recipient = ?) ORDER BY timestamp",
+        [userId, recipientId, recipientId, userId]
+      );
+    },
     villages: async () => {
       const [rows] = await db.query("SELECT * FROM villages");
       return rows;
@@ -35,11 +44,24 @@ const resolvers = {
       }
       return rows[0];
     },
+    getGallery: async (_, { userId }) => {
+      const [adminImages] = await db.query(`
+        SELECT g.* 
+        FROM gallery g
+        JOIN users u ON g.ownerId = u.id
+        WHERE u.role = 'admin'
+      `);
+    
+      const [userImages] = await db.query("SELECT * FROM gallery WHERE ownerId = ?", [userId]);
+    
+      const uniqueImages = new Map();
 
-    getGallery: async () => {
-      const [rows] = await db.query("SELECT * FROM gallery");
-      return rows;
-    },
+      [...adminImages, ...userImages].forEach((image) => {
+        uniqueImages.set(image.id, image);
+      });
+    
+      return Array.from(uniqueImages.values());    },
+    
 
     currentUser: async (_, __, { token }) => {
       if (!token) throw new Error("Not authenticated");
@@ -112,6 +134,14 @@ const resolvers = {
       { villageId, population, population_distribution, gender_ratios, population_growth_rate }
     ) => {
       try {
+        const populationDistributionJson = typeof population_distribution === "string"
+          ? JSON.parse(population_distribution)
+          : population_distribution;
+    
+        const genderRatiosJson = typeof gender_ratios === "string"
+          ? JSON.parse(gender_ratios)
+          : gender_ratios;
+    
         const sql = `
           UPDATE villages 
           SET 
@@ -123,8 +153,8 @@ const resolvers = {
         `;
         await db.query(sql, [
           population,
-          JSON.stringify(population_distribution), // تحويل التوزيع إلى نص JSON
-          JSON.stringify(gender_ratios),          // تحويل النسب إلى نص JSON
+          JSON.stringify(populationDistributionJson),
+          JSON.stringify(genderRatiosJson),
           population_growth_rate,
           villageId,
         ]);
@@ -139,8 +169,6 @@ const resolvers = {
         throw new Error("Failed to add demographic data");
       }
     },
-    
-
     updateVillage: async (_, args) => {
       const sql = `
         UPDATE villages 
@@ -242,16 +270,18 @@ const resolvers = {
     },
     
 
-    addImage: async (_, { imgBase64, imgText }) => {
-      const sql = "INSERT INTO gallery (imgBase64, imgText) VALUES (?, ?)";
-      const [result] = await db.query(sql, [imgBase64, imgText]);
+    addImage: async (_, { imgBase64, imgText, ownerId }) => {
+      const sql = "INSERT INTO gallery (imgBase64, imgText, ownerId) VALUES (?, ?, ?)";
+      const [result] = await db.query(sql, [imgBase64, imgText, ownerId]);
       return {
         id: result.insertId,
         imgBase64,
         imgText,
+        ownerId,
         createdAt: new Date().toISOString(),
       };
     },
+    
   },
 };
 
