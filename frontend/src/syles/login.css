@@ -1,0 +1,105 @@
+#root .login-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #1A202C; /* اللون الأساسي للخلفية */
+}
+
+.center-container {
+  background-color: #1A202C; /* تأكد من تطابق اللون */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* تمديد العرض بالكامل */
+  height: 100%; /* تمديد الطول */
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+    .center-container {
+        padding: 1rem;
+    }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+  #login {
+    background-color: #1F2937;
+    padding: 40px;
+    border-radius: 10px;
+    width: 360px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    text-align: center;
+  }
+  
+  #login h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    margin-top: 0;
+  }
+  
+  #login label {
+    font-size: 14px;
+    display: block;
+    text-align: left;
+    font-weight: 100;
+    margin-top: 20px;
+  }
+  
+  #login input[type="text"], #login input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 4px 0;
+    border-radius: 8px;
+    border: 1px solid #e3e3e4;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  #login button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background-color: #3C82F6;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #login button:hover {
+    background-color: #62A9FF;
+  }
+  
+  #login #tt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #login #tt .hh {
+    text-align: center;
+    color: #9CA3AF;
+  }
+  
+  #login #tt a {
+    cursor: pointer;
+    color: #3C82F6;
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  #login #tt a:hover {
+    color: #62A9FF;
+  }
+  
