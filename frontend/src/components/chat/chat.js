@@ -36,6 +36,7 @@ const Chat = () => {
     ws.current.onmessage = (event) => {
       try {
         const receivedMessage = JSON.parse(event.data);
+        setMessages((prevMessages) => [...prevMessages, receivedMessage]);
 
         if (
           isAdmin &&
